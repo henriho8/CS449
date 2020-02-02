@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Umpire Buddy</string>
+    <string name="strike_label">Strike:</string>
+    <string name="ball_label">Ball:</string>
+    <string name="reset_label">Reset</string>
+    <string name="end_label">End</string>
+    <string name="strike_button_label">Strike</string>
+    <string name="ball_button_label">Ball</string>
+    <string name="reset_button_label">Reset</string>
+    <string name="end_button_label">End</string>
+    <string name="strike_count_value">0</string>
+    <string name="ball_count_value">0</string>
+
+</resources>
