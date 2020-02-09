@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         View EndButton = findViewById(R.id.end_button);
         EndButton.setOnClickListener(this);
+
+        View AboutButton = findViewById(R.id.about_button);
+        AboutButton.setOnClickListener(this);
     }
 
     private void updateStrikeCount() {
@@ -107,6 +110,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 System.exit(0);
                 break;
+            case R.id.about_button:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("About");
+                builder.setMessage("Umpire Buddy 2.0, Henri Ho");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Go Back", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        strike_count = 0;
+                        updateStrikeCount();
+
+                        ball_count = 0;
+                        updateBallCount();
+                    }
+                });
+                builder.show();
         }
         updateStrikeCount();
         updateBallCount();
