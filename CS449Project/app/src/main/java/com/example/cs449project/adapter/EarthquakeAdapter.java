@@ -2,7 +2,7 @@ package com.example.cs449project.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,15 +69,19 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
         TextView primaryLocationView = (TextView) listItemView.findViewById(R.id.primary_location);
 
+        primaryLocationView.setText(primaryLocation);
+
+        TextView locationOffsetView = (TextView) listItemView.findViewById(R.id.location_offset);
+
         locationOffsetView.setText(locationOffset);
 
         Date dateObject = new Date(currentEarthquake.getTimeInMilliseconds());
 
-        TextView dateView = (TextView) listItemView.findViewById(R.id.date);
+        TextView timeView = (TextView) listItemView.findViewById(R.id.date);
 
-        String formattedDate = formatDate(dateOject);
+        String formattedDate = formatDate(dateObject);
 
-        timeView.setText(formattedTime);
+        timeView.setText(formattedDate);
 
         return listItemView;
     }
