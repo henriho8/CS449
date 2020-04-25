@@ -34,12 +34,14 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
                     R.layout.earthquake_list_item, parent, false);
         }
 
+        // Find the earthquake at a position in the list
         Earthquake currentEarthquake = getItem(position);
 
         TextView magnitudeView = (TextView) listItemView.findViewById(R.id.magnitude);
 
         String formattedMagnitude = formatMagnitude(currentEarthquake.getMagnitude());
 
+        // Displaying the magnitude
         magnitudeView.setText(formattedMagnitude);
 
         GradientDrawable magnitudeCircle = (GradientDrawable) magnitudeView.getBackground();
@@ -54,6 +56,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
         String locationOffset;
 
+        // Splitting string into different parts
         if (originalLocation.contains(LOCATION_SEPARATOR)) {
 
             String[] parts = originalLocation.split(LOCATION_SEPARATOR);
@@ -86,6 +89,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         return listItemView;
     }
 
+    // Return colors for certain magnitudes
     private int getMagnitudeColor(double magnitude) {
         int magnitudeColorResourceId;
         int magnitudeFloor = (int) Math.floor(magnitude);

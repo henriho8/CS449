@@ -36,9 +36,11 @@ import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
+    // URL for data
     private static final String USGS_REQUEST_URL =
             "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=4&limit=10";
 
+    // Adapter for list of earthquakes
     private EarthquakeAdapter mAdapter;
 
     @Override
@@ -46,9 +48,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Find a reference to ListView
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
 
-
+        // New adapter for empty list
         mAdapter = new EarthquakeAdapter(this, new ArrayList<Earthquake>());
 
 
@@ -91,13 +94,7 @@ public class MainActivity extends AppCompatActivity {
             return result;
         }
 
-        /**
-         * This method runs on the main UI thread after the background work has been
-         * completed. This method receives as input, the return value from the doInBackground()
-         * method. First we clear out the adapter, to get rid of earthquake data from a previous
-         * query to USGS. Then we update the adapter with the new list of earthquakes,
-         * which will trigger the ListView to re-populate its list items.
-         */
+
         @Override
         protected void onPostExecute(List<Earthquake> data) {
             // Clear the adapter of previous earthquake data
