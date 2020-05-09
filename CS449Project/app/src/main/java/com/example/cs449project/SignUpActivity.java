@@ -215,11 +215,8 @@ public class SignUpActivity extends AppCompatActivity {
                 .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
 
-
+                        // Display message if sign in fails
                         if(task.isSuccessful()){
 
                             FirebaseUser firebaseUser = acc_auth.getCurrentUser();

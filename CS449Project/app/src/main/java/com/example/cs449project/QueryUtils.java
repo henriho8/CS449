@@ -33,8 +33,10 @@ public class QueryUtils {
 
         try {
 
+            // Create URL from requestURL and make GET request
             url = new URL(requestUrl);
 
+            // Read/store URL connection as a string
             urlConnection = url.openConnection();
 
             // wrapping the urlconnection in a bufferedreader

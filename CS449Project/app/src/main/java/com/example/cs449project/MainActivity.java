@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         // New adapter for empty list
         mAdapter = new EarthquakeAdapter(this, new ArrayList<Earthquake>());
 
-
+        // Set adapter on ListView so the list can be filled
         earthquakeListView.setAdapter(mAdapter);
 
 
@@ -62,8 +62,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
+                // Find current earthquake clicked on
                 Earthquake currentEarthquake = mAdapter.getItem(position);
 
+                // Convert URL string to object URI
                 Uri earthquakeUri = Uri.parse(currentEarthquake.getUrl());
 
                 Intent eqIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
@@ -78,14 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
     private class EarthquakeAsyncTask extends AsyncTask<String, Void, List<Earthquake>> {
 
-        /**
-         * This method runs on a background thread and performs the network request.
-         * We should not update the UI from a background thread, so we return a list of
-         * {@link Earthquake}s as the result.
-         */
+
         @Override
         protected List<Earthquake> doInBackground(String... urls) {
-            // Don't perform the request if there are no URLs, or the first URL is null
+            // If there are no URLs then don't do request
             if (urls.length < 1 || urls[0] == null) {
                 return null;
             }
@@ -100,8 +98,7 @@ public class MainActivity extends AppCompatActivity {
             // Clear the adapter of previous earthquake data
             mAdapter.clear();
 
-            // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
-            // data set. This will trigger the ListView to update.
+            // Update/add to adapter data set if list is valid
             if (data != null && !data.isEmpty()) {
                 mAdapter.addAll(data);
             }
